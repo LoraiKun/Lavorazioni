@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+    <div class="flex justify-between gap_1 align-center mb-1" >
+      <label for="Descrizione">Descrizione:</label>
+      <input type="text" formControlName="Descrizione" class="input"/>
+    </div>
+
+    <!-- <label for="NumeroOfferta">Numero Offerta</label>
+    <input type="text" formControlName="NumeroOfferta"> -->
+    <div class="flex justify-between gap_1 align-center mb-1">
+      <label for="TempiSviluppo">Tempi di Sviluppo previsti:</label>
+      <input type="text" formControlName="TempiSviluppo" class="input"/>
+    </div>
+
+    <form action="" formGroupName="Azienda" class="flex justify-between gap_1 align-center mb-1" >
+      <label for="Azienda">Seleziona un azienda:</label>
+
+      <select name="" formControlName="id" (change)="selezionaAzienda($event)"class="input">
+        <option *ngFor="let azienda of listaAziende" [value]="azienda.id">
+          {{ azienda.Denominazione }}
+        </option>
+      </select>
+    </form>
+    <div class="flex justify-right">
+      <p-button label="Conferma" (onClick)="onSubmit()" [disabled]="form.invalid"></p-button>
+
+    </div>
+</form>

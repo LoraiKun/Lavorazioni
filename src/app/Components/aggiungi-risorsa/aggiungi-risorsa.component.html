@@ -1,0 +1,29 @@
+<form [formGroup]="form">
+  <div class="flex justify-between gap_1 align-center mb-1" >
+
+    <label for="Nome" class="">Nome</label>
+    <input type="text" formControlName="Nome" class="input mb-2" />
+  </div>
+  <div class="flex justify-between gap_1 align-center mb-1" >
+
+    <label for="Cognome" class="">Cognome</label>
+    <input type="text" formControlName="Cognome" class="input mb-2" />
+  </div>
+  <div class="flex justify-between gap_1 align-center mb-1" >
+
+    <label for="Email" class="">Email</label>
+    <input type="email" formControlName="Email" class="input mb-2" />
+  </div>
+  <div class="flex justify-between gap_1 align-center mb-1" >
+
+    <label for="OreLavorative" class="">Ore lavorative assegnate</label>
+    <input type="number" formControlName="OreLavorative" class="input mb-2" />
+  </div>
+
+
+    @if (modalita == 'aggiungi') {
+      <div class="flex justify-right">
+        <p-button label="Conferma" (onClick)="aggiungi()" [disabled]="form.invalid"></p-button>
+  
+      </div>    }
+</form>

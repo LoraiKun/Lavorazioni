@@ -1,0 +1,129 @@
+<div class="p-0">
+  <p-table
+    [value]="lavorazioni"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10]"
+  >
+    <ng-template #header>
+      <tr>
+        <th>Descrizione</th>
+        <th pSortableColumn="Azienda.Denominazione">
+          Azienda <p-sortIcon field="Azienda.Denominazione" />
+        </th>
+        <th pSortableColumn="DataLavorazione">
+          Data <p-sortIcon field="DataLavorazione" />
+        </th>
+        <th>Tempo di sviluppo</th>
+        <th>Stato lavorazione</th>
+        <th>Azioni</th>
+      </tr>
+      <tr>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="Descrizione"
+            placeholder="Cerca per descrizione"
+            ariaLabel="Filter descrizione"
+          ></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter
+            type="text"
+            field="Azienda.Denominazione"
+            placeholder="Cerca per Azienda"
+            ariaLabel="Filter Denominazione"
+          ></p-columnFilter>
+        </th>
+        <th><p-columnFilter type="date" field="DataLavorazione" > </p-columnFilter></th>
+        <th>
+          <!--  -->
+        </th>
+        <th></th>
+        <th>
+          <!-- <ng-template #filter let-value let-filter="filterCallback">
+            <p-multiSelect  [options]="representatives" placeholder="Any" (onChange)="filter($event.value)" optionLabel="name" />
+            <ng-template let-option #item>
+                    <div class="inline-block align-middle">
+                        <img [alt]="option.label" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ option.image }}" width="24" class="align-middle" />
+                        <span class="ml-1 mt-1">{{ option.name }}</span>
+                    </div>
+                </ng-template>
+          </ng-template> -->
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-lavorazione>
+      <tr>
+        <td>{{ lavorazione.Descrizione }}</td>
+        <td>{{ lavorazione.Azienda.Denominazione }}</td>
+        <td>{{ lavorazione.DataLavorazione | date : "dd/MM/yyyy" }}</td>
+        <td>{{ lavorazione.TempiSviluppo }}</td>
+        <td>{{ lavorazione.StatoLavorazione }}</td>
+        <td>
+          <div class="flex gap_0">
+            <button
+              tooltipPosition="left"
+              (click)="eliminaLavorazione(lavorazione.id)"
+              class="button-delete"
+              pTooltip="Elimina risorsa"
+            >
+              <i class="pi pi-trash" style="color: white"></i>
+            </button>
+            <button
+              class="button-edit"
+              tooltipPosition="left"
+              pTooltip="Gestisci Note"
+              (click)="gestisciNote(lavorazione)"
+            >
+              <i class="pi pi-clipboard" style="color: white"></i>
+            </button>
+            <button
+              class="button-team"
+              tooltipPosition="left"
+              pTooltip="Gestisci team"
+              (click)="gestisciTeam(lavorazione)"
+            >
+              <i class="pi pi-user-edit" style="color: white"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="flex justify-right m-1">
+  <p-button
+    severity="info"
+    label="Aggiungi lavorazione"
+    (onClick)="isVisible = true"
+  ></p-button>
+</div>
+
+<app-modal
+  header="Nuova Lavorazione"
+  [isVisible]="isVisible"
+  (evento_hide)="isVisible = false"
+>
+  <app-add-lavorazione></app-add-lavorazione>
+</app-modal>
+
+<app-modal
+  header="Gestisci team"
+  [isVisible]="stato_gestisciTeam"
+  (evento_hide)="stato_gestisciTeam = false"
+  *ngIf="stato_gestisciTeam"
+>
+  <app-modifica-team [lavorazione]="lavorazioneAttuale"></app-modifica-team>
+</app-modal>
+
+<app-modal
+  header="Gestisci Note"
+  [isVisible]="stato_gestisciNote"
+  (evento_hide)="stato_gestisciNote = false"
+  *ngIf="stato_gestisciNote"
+>
+  <app-gestisci-note [lavorazione]="lavorazioneAttuale"></app-gestisci-note>
+</app-modal>

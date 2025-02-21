@@ -1,0 +1,76 @@
+
+
+@if (lavorazione) {
+  @if (lavorazione.Risorse.length > 0 && modalita == 'visualizza') {
+    <h3 class="std-m">Risorse assegnate:</h3>
+    <div class="risorse-container">
+      @for (risorsa of lavorazione.Risorse; track $index) {
+        <div  class="risorsa-card mb-1">
+          <h3 class="risorsa-nome">{{ risorsa.Cognome }} {{ risorsa.Nome }}</h3>
+          <p class="risorsa-info">
+            <strong>Ore lavorative assegnate:</strong> {{ risorsa.OreLavorative }}
+          </p>
+          <p class="risorsa-info">
+            <strong>Ruolo:</strong> {{ risorsa.Ruoli }}
+          </p>      </div>
+      }
+    </div>
+    <div>
+      <p-button label="Modifica risorse" severity="info" class="std-m" (onClick)="cambiaMod()"></p-button>
+  
+    </div>
+  }@else{
+    <h3 *ngIf="lavorazione.Risorse.length == 0"> Non ci sono risorse, creane subito una</h3>
+    <h3 *ngIf="lavorazione.Risorse"> Aggiungi o elimina risorse</h3>
+    <form [formGroup]="form">
+      <form formArrayName="Risorse">
+        @for (risorsa of risorse.controls; track $index) {
+        <form [formGroup]="returnFormGroup(risorsa)" class="mt-0">
+          <div class="flex gap_0 align-center mb-0">
+            <button type="button" (click)="rimuoviRisorsa($index)" class="elimina-risorsa">-</button>
+            <label>Risorsa:</label>
+    
+            <select
+              formControlName="id"
+              (change)="addRisorsa($index, $event)"
+              class="input"
+            >
+              <option
+                *ngFor="let risorsa of listaRisorse"
+                [value]="risorsa.id"
+                [disabled]="!isAviable(risorsa.id)"
+              >
+                {{ risorsa.Nome }} {{ risorsa.Cognome }}
+              </option>
+            </select>
+          </div>
+          <div class="flex gap_0 align-center justify-right mb-0">
+            <label>Ruolo:</label>
+            <input formControlName="Ruoli" type="text" class="input" />
+          </div>
+          <div class="flex justify-right">
+            <p-button (onClick)="setPM(risorsa)" severity="contrast" label="Set PM" size="small"></p-button>
+
+          </div>
+        </form>
+        <p-divider />
+    
+        }
+      </form>
+      <div class="flex justify-between mt-0 gap_1">
+        <p-button severity="secondary" label="Indietro" (onClick)="cambiaMod()"></p-button>
+
+        <p-button (onClick)="aggiungiRisorsa()" label="Aggiungi risorsa" severity="info"></p-button>
+        <p-button (onClick)="onSubmit()" label="Conferma"></p-button>
+
+      </div>
+    </form>
+  }
+  
+  
+}
+
+
+
+
+<p-toast />

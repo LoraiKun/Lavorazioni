@@ -1,0 +1,182 @@
+{
+  "Lavorazioni": [
+    {
+      "id": "5d61",
+      "Azienda": {
+        "id": "107f",
+        "Denominazione": "Design Creations Srl",
+        "Referente": "Giuseppe Verdi",
+        "RecTelReferente": "+39 345 6789012",
+        "Indirizzo": "Corso Italia, 789, Roma, RM",
+        "Piva": "IT34567890123"
+      },
+      "Descrizione": "Lavorazione importante",
+      "DataLavorazione": "2025-02-17",
+      "TempiSviluppo": "12",
+      "StatoLavorazione": "In corso",
+      "Risorse": [
+        {
+          "id": "c834",
+          "Nome": "Luca",
+          "Cognome": "Bianchi",
+          "Email": "luca.bianchi@example.com",
+          "OreLavorative": "10",
+          "Ruoli": "Project Manager"
+        },
+        {
+          "id": "a193",
+          "Nome": "Lorenzo ",
+          "Cognome": "Dettori",
+          "Email": "lorenzo.dettori@nvgroup.it",
+          "OreLavorative": "10",
+          "Ruoli": "Programmatore FE"
+        },
+        {
+          "id": "297e",
+          "Nome": "Mario",
+          "Cognome": "Rossi",
+          "Email": "mario.rossi@example.com",
+          "OreLavorative": "10",
+          "Ruoli": "bravo quaglione"
+        }
+      ],
+      "Note": [
+        {
+          "DataCreazione": "2025-02-20T13:52:00.253Z",
+          "Descrizione": "Rendicontazione effettuata",
+          "Tag": [
+            "Verifica qualità"
+          ],
+          "Titolo": "Rendicontazione",
+          "Autore": "Lorenzo Dettori"
+        }
+      ]
+    },
+    {
+      "id": "c4f1",
+      "Azienda": {
+        "id": "7295",
+        "Denominazione": "Green Innovators S.p.A.",
+        "Referente": "Lucia Bianchi",
+        "RecTelReferente": "+39 098 7654321",
+        "Indirizzo": "Viale Europa, 456, Torino, TO",
+        "Piva": "IT23456789012"
+      },
+      "Descrizione": "Lavorazione di test, non eliminare",
+      "DataLavorazione": "2025-02-20",
+      "TempiSviluppo": "12 giorni",
+      "StatoLavorazione": "In corso",
+      "Risorse": [],
+      "Note": [
+        {
+          "DataCreazione": "2025-02-20T12:16:26.096Z",
+          "Descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ultricies enim ut lorem volutpat, a congue libero tempor. Donec vehicula, urna ac suscipit posuere,",
+          "Tag": [],
+          "Titolo": [
+            "Nuova nota"
+          ],
+          "Autore": [
+            "Lorenzo Dettori"
+          ]
+        },
+        {
+          "DataCreazione": [
+            [
+              [
+                "2025-02-20T12:19:04.652Z"
+              ]
+            ]
+          ],
+          "Descrizione": "mi chiamo virgola, sono un cretino, per colazione mangio il telefonino, e tra parentesi, chissà perché... ogni due mesi ho un aneurisma e pure te!",
+          "Tag": [],
+          "Titolo": [
+            [
+              [
+                [
+                  [
+                    "Nuova nota"
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "Autore": [
+            [
+              [
+                [
+                  [
+                    "Lorenzo Dettori"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "Risorse": [
+    {
+      "Nome": "Mario",
+      "Cognome": "Rossi",
+      "Email": "mario.rossi@example.com",
+      "OreLavorative": 40,
+      "id": "297e"
+    },
+    {
+      "Nome": "Luca",
+      "Cognome": "Bianchi",
+      "Email": "luca.bianchi@example.com",
+      "OreLavorative": 35,
+      "id": "c834"
+    },
+    {
+      "id": "c0a0",
+      "Nome": "pippo",
+      "Cognome": "bestia",
+      "Email": "bestia@pippo.it",
+      "OreLavorative": "14"
+    },
+    {
+      "id": "a193",
+      "Nome": "Lorenzo ",
+      "Cognome": "Dettori",
+      "Email": "lorenzo.dettori@nvgroup.it",
+      "OreLavorative": 60
+    }
+  ],
+  "Aziende": [
+    {
+      "Denominazione": "Tech Solutions Srl",
+      "Referente": "Marco Rossi",
+      "RecTelReferente": "+39 123 4567890",
+      "Indirizzo": "Via Roma, 123, Milano, MI",
+      "Piva": "IT12345678901",
+      "id": "721a"
+    },
+    {
+      "Denominazione": "Green Innovators S.p.A.",
+      "Referente": "Lucia Bianchi",
+      "RecTelReferente": "+39 098 7654321",
+      "Indirizzo": "Viale Europa, 456, Torino, TO",
+      "Piva": "IT23456789012",
+      "id": "7295"
+    },
+    {
+      "Denominazione": "Design Creations Srl",
+      "Referente": "Giuseppe Verdi",
+      "RecTelReferente": "+39 345 6789012",
+      "Indirizzo": "Corso Italia, 789, Roma, RM",
+      "Piva": "IT34567890123",
+      "id": "107f"
+    },
+    {
+      "Denominazione": "BlueTech Solutions Srl",
+      "Referente": "Sara Neri",
+      "RecTelReferente": "+39 567 8901234",
+      "Indirizzo": "Piazza San Giovanni, 101, Bologna, BO",
+      "Piva": "IT45678901234",
+      "id": "5e68"
+    }
+  ]
+}

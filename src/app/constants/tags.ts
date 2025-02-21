@@ -1,0 +1,22 @@
+export const TAGS: string[] = [
+    "Inizio lavorazione",
+    "Materiale ricevuto",
+    "Verifica qualità",
+    "Lavorazione in corso",
+    "Assemblaggio",
+    "Controllo qualità",
+    "Test funzionali",
+    "Modifica richiesta",
+    "Ritardo lavorazione",
+    "Completato",
+    "Spedizione",
+    "Consegna effettuata",
+    "Anomalia riscontrata",
+    "Riparazione necessaria",
+    "Manutenzione programmata",
+    "Sospensione temporanea",
+    "Reso fornitore",
+    "Nuova richiesta cliente",
+    "Aggiornamento documentazione",
+    "Chiusura lavorazione"
+  ]

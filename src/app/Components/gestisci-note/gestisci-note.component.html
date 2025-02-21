@@ -1,0 +1,94 @@
+@if (lavorazione) { @if (lavorazione.Note && modalita == 'visualizza') {
+<div class="flex gap_1 mb-2">
+  <div class="flex f-column gap_0">
+    <label for="">Filtra per Tag</label>
+    <p-multiselect #multiSelect [options]="tags" (onChange)="selectTags(multiSelect.value)"  placeholder="Seleziona i tag" [maxSelectedLabels]="3" styleClass="w-full md:w-80" />
+  </div>
+  <div class="flex f-column gap_0">
+    <label  for=""  >Filtra per autore</label>
+    <input #autoreFilter type="text" class="input" (keyup)="filtraAutore(autoreFilter.value)"/>
+  </div>
+  <div class="flex f-column gap_0">
+    <label for="">Filtra per Titolo</label>
+    <input #titoloFilter type="text" class="input" (keyup)="filtraTitolo(titoloFilter.value)"/>
+  </div>
+
+</div>
+<div class="risorse-container">
+  @for (nota of noteFiltrate; track $index) {
+
+  <div class="risorsa-card mb-1">
+    <h3 class="risorsa-nome flex justify-between">
+      <span>{{ nota.Titolo }} </span>
+      <span class="flex gap_0"
+        ><i class="pi pi-pencil" (click)="cambiaMod($index)"></i>
+        <i class="pi pi-trash" (click)="deleteNote($index)"></i
+      ></span>
+    </h3>
+    <p class="risorsa-info"><strong>Autore:</strong> {{ nota.Autore }}</p>
+    <p class="risorsa-info">
+      <strong>Data creazione:</strong>
+      {{ nota.DataCreazione | date : "dd-MM-yy" }}
+    </p>
+    <p class="risorsa-info">
+      <strong>Descrizione:</strong> {{ nota.Descrizione }}
+    </p>
+    <p class="risorsa-info mt-0">
+      @for (t of nota.Tag; track $index) {
+      <span class="tag">{{ t }}</span>
+      }
+    </p>
+  </div>
+  }
+</div>
+<p-button
+  severity="info"
+  (onClick)="entraNuovaNota()"
+  label="Aggiungi nota"
+></p-button>
+
+}@else{ @if (!lavorazione.Note) {
+<h3 class="mb-2" style="margin-top: 0px">Non ci sono note, creane una nuova</h3>
+}
+<form [formGroup]="form">
+  <div class="flex gap_1">
+    <p-button type="button" (click)="addTag(tagSelect.value)" severity="info"
+      >Aggiungi Tag</p-button
+    >
+
+    <p-select #tagSelect [options]="tagList" size="small" class="input" />
+  </div>
+  <div class="tag-container">
+    @for (tag of formTagArray.controls; track $index) {
+    <div class="tag">
+      {{ tag.value }}
+      <button type="button" class="tag-delete" (click)="deleteTag($index)">
+        <i class="pi pi-trash" style="font-size: 10px"></i>
+      </button>
+    </div>
+    }
+  </div>
+
+  <div class="flex justify-between gap_1 align-center mb-1">
+    <label for="Titolo" class="">Titolo Nota:</label>
+    <input type="text" formControlName="Titolo" class="input mb-2" />
+  </div>
+  <div class="flex justify-between gap_1 mb-1">
+    <label for="Descrizione" class="">Descrizione:</label>
+    <textarea
+      rows="5"
+      pTextarea
+      formControlName="Descrizione"
+      style="width: 300px"
+    ></textarea>
+  </div>
+  <div class="flex justify-between gap_1">
+    <p-button
+      label="Indietro"
+      severity="secondary"
+      (onClick)="modalita = 'visualizza'"
+    ></p-button>
+    <p-button type="button" (onClick)="onSubmit()" label="Conferma"></p-button>
+  </div>
+</form>
+} }
